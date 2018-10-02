@@ -124,7 +124,7 @@ var Engine = (function(global) {
             row, col;
         
         // Antes de fazer os desenhos, limpe os canvas existentes
-        ctx.clearRect(0,0,canvas.width,canvas.height)
+        ctx.clearRect(0,0,canvas.width,canvas.height);
 
         /* Faça o loop pelo número de linhas e colunas que definimos acima
          * e, usando a array rowImages, desenhe a imagem correta para
