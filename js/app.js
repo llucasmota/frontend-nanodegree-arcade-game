@@ -36,9 +36,13 @@ class Enemy extends Generic {
 }
 
 
-
-
-
+class Player extends Generic {
+    constructor(x, y, sprite) {
+        super(x, y, sprite);
+        this.level = level;
+        this.live = live;
+    }
+}
 // Agora, escreva sua própria classe de jogador
 // Esta classe exige um método update(), 
 // um render() e um handleInput().
