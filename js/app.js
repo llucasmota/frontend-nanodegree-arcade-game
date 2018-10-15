@@ -1,21 +1,12 @@
-var spriteEnemy = "images/enemy-bug.png";
 class Generic {
     constructor(x, y, sprite) {
         this.x = x;
         this.y = y;
         this.sprite = sprite;
-        this.speed = speed;
     }
 }
 // Inimigos que nosso jogador deve evitar
-
 class Enemy extends Generic {
-    // As variáveis aplicadas a nossas instâncias entram aqui.
-    // Fornecemos uma a você para que possa começcar.
-
-    // A imagem/sprite de nossos inimigos, isso usa um
-    // ajudante que é fornecido para carregar imagens
-    // com facilidade.
     constructor(x, y, speed, sprite) {
         super(x, y, sprite);
         this.speed = speed;
@@ -23,26 +14,42 @@ class Enemy extends Generic {
     // Desenhe o inimigo na tela, método exigido pelo jogo
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-
     }
     // Atualize a posição do inimigo, método exigido pelo jogo
     // Parâmetro: dt, um delta de tempo entre ticks
     update(dt) {
-        this.x += speed * dt;
+        this.x += this.speed * dt;
     }
-    // Você deve multiplicar qualquer movimento pelo parâmetro
-    // dt, o que garantirá que o jogo rode na mesma velocidade
-    // em qualquer computador.
 }
+/**
+ * Instanciando Enemy's
+ */
+let allEnemies = [
+    new Enemy(80, 80, null, 'images/enemy-bug.png'),
+    new Enemy(50, 50, null, 'images/enemy-bug.png'),
+    new Enemy(70, 60, null, 'images/enemy-bug.png'),
 
-
+];
+/**
+ * Você deve multiplicar qualquer movimento pelo parâmetro
+dt, o que garantirá que o jogo rode na mesma velocidade
+em qualquer computador.
+ */
 class Player extends Generic {
-    constructor(x, y, sprite) {
+    constructor(x, y, speed, sprite) {
         super(x, y, sprite);
-        this.level = level;
-        this.live = live;
+        this.speed = speed;
+    }
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+    // Atualize a posição do inimigo, método exigido pelo jogo
+    // Parâmetro: dt, um delta de tempo entre ticks
+    update(dt) {
+        this.x += this.speed * dt;
     }
 }
+var player = new Player(202, 395, 10, 'images/char-boy.png');
 // Agora, escreva sua própria classe de jogador
 // Esta classe exige um método update(), 
 // um render() e um handleInput().
@@ -51,7 +58,6 @@ class Player extends Generic {
 // Represente seus objetos como instâncias.
 // Coloque todos os objetos inimgos numa array allEnemies
 // Coloque o objeto do jogador numa variável chamada jogador.
-
 
 
 // Isto reconhece cliques em teclas e envia as chaves para seu
