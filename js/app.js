@@ -19,6 +19,7 @@ class Enemy extends Generic {
     // Parâmetro: dt, um delta de tempo entre ticks
     update(dt) {
         this.x += this.speed * dt;
+        
     }
 }
 /**
@@ -46,13 +47,13 @@ class Player extends Generic {
     // Atualize a posição do inimigo, método exigido pelo jogo
     // Parâmetro: dt, um delta de tempo entre ticks
     update(dt) {
-        this.x += this.speed * dt;
+        
     }
 }
-var player = new Player(202, 395, 10, 'images/char-boy.png');
+let player = new Player(200, 400, 10, 'images/char-boy.png');
 // Agora, escreva sua própria classe de jogador
 // Esta classe exige um método update(), 
-// um render() e um handleInput().
+// um render() e um handleInput()2.
 
 
 // Represente seus objetos como instâncias.
