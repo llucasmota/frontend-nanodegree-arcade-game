@@ -18,18 +18,16 @@ class Enemy extends Generic {
     // Atualize a posição do inimigo, método exigido pelo jogo
     // Parâmetro: dt, um delta de tempo entre ticks
     update(dt) {
-        this.x += this.speed * dt;
-        
+        this.x += this.speed;
     }
 }
 /**
  * Instanciando Enemy's
  */
 let allEnemies = [
-    new Enemy(80, 80, null, 'images/enemy-bug.png'),
-    new Enemy(50, 50, null, 'images/enemy-bug.png'),
-    new Enemy(70, 60, null, 'images/enemy-bug.png'),
-
+    new Enemy(0, 80,  5,  'images/enemy-bug.png'),
+    new Enemy(0, 160, 7, 'images/enemy-bug.png'),
+    new Enemy(0, 240, 10, 'images/enemy-bug.png'),
 ];
 /**
  * Você deve multiplicar qualquer movimento pelo parâmetro
