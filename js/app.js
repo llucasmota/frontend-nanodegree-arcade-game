@@ -10,6 +10,7 @@ class Enemy extends Generic {
     constructor(x, y, speed, sprite) {
         super(x, y, sprite);
         this.speed = speed;
+
     }
     // Desenhe o inimigo na tela, método exigido pelo jogo
     render() {
@@ -18,26 +19,35 @@ class Enemy extends Generic {
     // Atualize a posição do inimigo, método exigido pelo jogo
     // Parâmetro: dt, um delta de tempo entre ticks
     update(dt) {
-        this.x += this.speed;
+        this.x += this.speed * dt;
+    }
+    reset() {
+        
     }
 }
-/**
- * Instanciando Enemy's
- */
-let allEnemies = [
-    new Enemy(0, 80,  5,  'images/enemy-bug.png'),
-    new Enemy(0, 160, 7, 'images/enemy-bug.png'),
-    new Enemy(0, 240, 10, 'images/enemy-bug.png'),
+var allEnemies = [
+    new Enemy(0, 80, 100, 'images/enemy-bug.png'),
+    new Enemy(0, 160, 150, 'images/enemy-bug.png'),
+    new Enemy(0, 240, 160, 'images/enemy-bug.png'),
+    new Enemy(0, 80, 180, 'images/enemy-bug.png'),
+    new Enemy(0, 160, 200, 'images/enemy-bug.png'),
+    new Enemy(0, 240, 190, 'images/enemy-bug.png'),
 ];
+
+
+
 /**
  * Você deve multiplicar qualquer movimento pelo parâmetro
 dt, o que garantirá que o jogo rode na mesma velocidade
 em qualquer computador.
  */
 class Player extends Generic {
-    constructor(x, y, speed, sprite) {
+    constructor(x, y, sprite) {
         super(x, y, sprite);
-        this.speed = speed;
+        this.actX = 70;
+        this.actY = 3;
+        this.act = '';
+        //this.speed  speed;
     }
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -45,10 +55,18 @@ class Player extends Generic {
     // Atualize a posição do inimigo, método exigido pelo jogo
     // Parâmetro: dt, um delta de tempo entre ticks
     update(dt) {
-        
+        switch(this.act)   {
+            case 'up':
+            this.y -= this.actY;
+            break;
+        }
+
+    }
+    handleInput(action)    {
+        this.act = action; 
     }
 }
-let player = new Player(200, 400, 10, 'images/char-boy.png');
+let player = new Player(200, 400,'images/char-boy.png');
 // Agora, escreva sua própria classe de jogador
 // Esta classe exige um método update(), 
 // um render() e um handleInput()2.
