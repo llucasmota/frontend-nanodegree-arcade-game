@@ -22,7 +22,7 @@ class Enemy extends Generic {
         this.x += this.speed * dt;
     }
     reset() {
-        
+
     }
 }
 var allEnemies = [
@@ -45,7 +45,7 @@ class Player extends Generic {
     constructor(x, y, sprite) {
         super(x, y, sprite);
         this.actX = 70;
-        this.actY = 3;
+        this.actY = 410;
         this.act = '';
         //this.speed  speed;
     }
@@ -54,19 +54,28 @@ class Player extends Generic {
     }
     // Atualize a posição do inimigo, método exigido pelo jogo
     // Parâmetro: dt, um delta de tempo entre ticks
-    update(dt) {
-        switch(this.act)   {
-            case 'up':
-            this.y -= this.actY;
-            break;
+    update() {
+
+    }
+    handleInput(key) {
+        console.log("este é o x: " + this.x, "este é o y: " + this.y);
+        if (key === "up" && this.y >= 8 && this.y >= -70) {
+            this.y -= 98;
+        }
+        if (key === "down" && this.y < 410) {
+            this.y += 99;
+        }
+        if (key === "right" && this.x >= 0 && this.x <= 380) {
+            this.x += 100;
+        }
+        if (key === "left" && this.x >= 5) {
+            this.x -= 100;
         }
 
     }
-    handleInput(action)    {
-        this.act = action; 
-    }
 }
-let player = new Player(200, 400,'images/char-boy.png');
+
+let player = new Player(200, 420, 'images/char-boy.png');
 // Agora, escreva sua própria classe de jogador
 // Esta classe exige um método update(), 
 // um render() e um handleInput()2.
