@@ -20,18 +20,23 @@ class Enemy extends Generic {
     // Parâmetro: dt, um delta de tempo entre ticks
     update(dt) {
         this.x += this.speed * dt;
+        if(this.x >= 404)   {
+            this.x = 0;
+        }
+        
+
     }
     reset() {
 
     }
 }
 var allEnemies = [
-    new Enemy(0, 80, 100, 'images/enemy-bug.png'),
-    new Enemy(0, 160, 150, 'images/enemy-bug.png'),
-    new Enemy(0, 240, 160, 'images/enemy-bug.png'),
-    new Enemy(0, 80, 180, 'images/enemy-bug.png'),
-    new Enemy(0, 160, 200, 'images/enemy-bug.png'),
-    new Enemy(0, 240, 190, 'images/enemy-bug.png'),
+    new Enemy(0, 80, 50, 'images/enemy-bug.png'),
+    new Enemy(0, 160, 50, 'images/enemy-bug.png'),
+    new Enemy(0, 240, 60, 'images/enemy-bug.png'),
+    new Enemy(0, 80, 80, 'images/enemy-bug.png'),
+    new Enemy(0, 160, 90, 'images/enemy-bug.png'),
+    new Enemy(0, 240, 90, 'images/enemy-bug.png'),
 ];
 
 
