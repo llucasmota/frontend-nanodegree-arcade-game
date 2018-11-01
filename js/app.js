@@ -10,7 +10,6 @@ class Enemy extends Generic {
     constructor(x, y, speed, sprite) {
         super(x, y, sprite);
         this.speed = speed;
-
     }
     // Desenhe o inimigo na tela, método exigido pelo jogo
     render() {
@@ -20,11 +19,9 @@ class Enemy extends Generic {
     // Parâmetro: dt, um delta de tempo entre ticks
     update(dt) {
         this.x += this.speed * dt;
-        if(this.x >= 404)   {
+        if (this.x >= 404) {
             this.x = 0;
         }
-        
-
     }
     reset() {
 
@@ -38,9 +35,6 @@ var allEnemies = [
     new Enemy(0, 160, 90, 'images/enemy-bug.png'),
     new Enemy(0, 240, 90, 'images/enemy-bug.png'),
 ];
-
-
-
 /**
  * Você deve multiplicar qualquer movimento pelo parâmetro
 dt, o que garantirá que o jogo rode na mesma velocidade
@@ -76,10 +70,8 @@ class Player extends Generic {
         if (key === "left" && this.x >= 5) {
             this.x -= 100;
         }
-
     }
 }
-
 let player = new Player(200, 420, 'images/char-boy.png');
 // Agora, escreva sua própria classe de jogador
 // Esta classe exige um método update(), 
