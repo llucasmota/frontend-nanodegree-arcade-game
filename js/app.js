@@ -32,8 +32,8 @@ var allEnemies = [
     new Enemy(0, 160, 50, 'images/enemy-bug.png'),
     new Enemy(0, 240, 60, 'images/enemy-bug.png'),
     new Enemy(0, 80, 80, 'images/enemy-bug.png'),
-    new Enemy(0, 160, 90, 'images/enemy-bug.png'),
-    new Enemy(0, 240, 90, 'images/enemy-bug.png'),
+    // new Enemy(0, 160, 90, 'images/enemy-bug.png'),
+    // new Enemy(0, 240, 90, 'images/enemy-bug.png'),
 ];
 /**
  * Você deve multiplicar qualquer movimento pelo parâmetro
@@ -54,10 +54,17 @@ class Player extends Generic {
     // Atualize a posição do inimigo, método exigido pelo jogo
     // Parâmetro: dt, um delta de tempo entre ticks
     update() {
-
+        allEnemies.forEach(function(index){
+            if(index.x - player.x <= 5 && index.y - player.y <= 5)    {
+                console.log("collision");
+            } else {
+                console.log("nada não");
+            }
+        });
     }
     handleInput(key) {
-        console.log("este é o x: " + this.x, "este é o y: " + this.y);
+        let playerX = '',
+        playerY = ''; 
         if (key === "up" && this.y >= 8 && this.y >= -70) {
             this.y -= 98;
         }
@@ -70,6 +77,11 @@ class Player extends Generic {
         if (key === "left" && this.x >= 5) {
             this.x -= 100;
         }
+        //console.log("este é o x: " + this.x, "este é o y: " + this.y);
+       
+    }
+    collision() {
+
     }
 }
 let player = new Player(200, 420, 'images/char-boy.png');
