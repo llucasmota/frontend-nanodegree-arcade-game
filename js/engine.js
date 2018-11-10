@@ -84,8 +84,10 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        player.checkCollisions();
     }
+    
+
 
     /* É chamada pela função update, faz loops por todos os objetos dentro
      * de sua array allEnemies, como definido no app.js, e chama

@@ -28,10 +28,10 @@ class Enemy extends Generic {
     }
 }
 var allEnemies = [
-    new Enemy(0, 80, 50, 'images/enemy-bug.png'),
-    new Enemy(0, 160, 50, 'images/enemy-bug.png'),
-    new Enemy(0, 240, 60, 'images/enemy-bug.png'),
-    new Enemy(0, 80, 80, 'images/enemy-bug.png'),
+    new Enemy(0, 101, 50, 'images/enemy-bug.png'),
+    new Enemy(0, 202, 50, 'images/enemy-bug.png'),
+    // new Enemy(0, 240, 60, 'images/enemy-bug.png'),
+    // new Enemy(0, 80, 80, 'images/enemy-bug.png'),
     // new Enemy(0, 160, 90, 'images/enemy-bug.png'),
     // new Enemy(0, 240, 90, 'images/enemy-bug.png'),
 ];
@@ -43,10 +43,6 @@ em qualquer computador.
 class Player extends Generic {
     constructor(x, y, sprite) {
         super(x, y, sprite);
-        this.actX = 70;
-        this.actY = 410;
-        this.act = '';
-        //this.speed  speed;
     }
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -54,37 +50,40 @@ class Player extends Generic {
     // Atualize a posição do inimigo, método exigido pelo jogo
     // Parâmetro: dt, um delta de tempo entre ticks
     update() {
-        allEnemies.forEach(function(index){
-            if(index.x - player.x <= 5 && index.y - player.y <= 5)    {
-                console.log("collision");
+
+    }
+    handleInput(key) {
+
+        if (key === "up" && this.y >= 8 && this.y >= -70) {
+            this.y -= 101;
+        }
+        if (key === "down" && this.y < 410) {
+            this.y += 101;
+        }
+        if (key === "right" && this.x >= -2 && this.x <= 380) {
+            this.x += 101;
+        }
+        if (key === "left" && this.x >= 5) {
+            this.x -= 101;
+        }
+    }
+    reset() {
+        this.x = 200;
+        this.y = 420;
+    }
+
+    checkCollisions() {
+        allEnemies.forEach(function (enemy) {
+            if (player.y <= (enemy.y - 15) && player.x <= (enemy.x - 15) || player.y <= (enemy.y + 15) && player.x <= (enemy.x + 15)) {
+                console.log("calma aí");
+                player.reset();
             } else {
-                console.log("nada não");
+                console.log("continua");
             }
         });
     }
-    handleInput(key) {
-        let playerX = '',
-        playerY = ''; 
-        if (key === "up" && this.y >= 8 && this.y >= -70) {
-            this.y -= 98;
-        }
-        if (key === "down" && this.y < 410) {
-            this.y += 99;
-        }
-        if (key === "right" && this.x >= 0 && this.x <= 380) {
-            this.x += 100;
-        }
-        if (key === "left" && this.x >= 5) {
-            this.x -= 100;
-        }
-        //console.log("este é o x: " + this.x, "este é o y: " + this.y);
-       
-    }
-    collision() {
-
-    }
 }
-let player = new Player(200, 420, 'images/char-boy.png');
+var player = new Player(200, 430, 'images/char-boy.png');
 // Agora, escreva sua própria classe de jogador
 // Esta classe exige um método update(), 
 // um render() e um handleInput()2.
