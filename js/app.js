@@ -9,7 +9,7 @@ class Generic {
 class Enemy extends Generic {
     constructor(x, y, speed, sprite) {
         super(x, y, sprite);
-        
+
         this.speed = speed;
     }
     // Desenhe o inimigo na tela, método exigido pelo jogo
@@ -29,12 +29,10 @@ class Enemy extends Generic {
     }
 }
 var allEnemies = [
-    new Enemy(0, 130, 50, 'images/enemy-bug.png'),
-    // new Enemy(0, 202, 50, 'images/enemy-bug.png'),
-    // new Enemy(0, 240, 60, 'images/enemy-bug.png'),
-    // new Enemy(0, 80, 80, 'images/enemy-bug.png'),
-    // new Enemy(0, 160, 90, 'images/enemy-bug.png'),
-    // new Enemy(0, 240, 90, 'images/enemy-bug.png'),
+    new Enemy(0, 130, 60, 'images/enemy-bug.png'),
+    new Enemy(0, 230, 20, 'images/enemy-bug.png'),
+    new Enemy(0, 330, 30, 'images/enemy-bug.png'),
+
 ];
 /**
  * Você deve multiplicar qualquer movimento pelo parâmetro
@@ -51,13 +49,13 @@ class Player extends Generic {
     // Atualize a posição do inimigo, método exigido pelo jogo
     // Parâmetro: dt, um delta de tempo entre ticks
     update() {
-        this.checkCollisions();
+
     }
     handleInput(key) {
 
         if (key === "up" && this.y >= 8 && this.y >= -70) {
             this.y -= 100;
-           
+
         }
         if (key === "down" && this.y < 410) {
             this.y += 100;
@@ -68,6 +66,7 @@ class Player extends Generic {
         if (key === "left" && this.x >= 5) {
             this.x -= 101;
         }
+
     }
     reset() {
         this.x = 200;
@@ -76,15 +75,15 @@ class Player extends Generic {
 
     checkCollisions() {
         allEnemies.forEach(function (enemy) {
-          if(enemy.y === player.y){
-              for(var i = 0; i <= 20; i++)  {
-                  if((enemy.x.toFixed(0)) == player.x - i || (enemy.x.toFixed(0)) == player.x + i){
+            if (enemy.y === player.y) {
+                for (var i = 0; i <= 20; i++) {
+                    if ((enemy.x.toFixed(0)) == player.x - i || (enemy.x.toFixed(0)) == player.x + i) {
                         player.reset();
                         alert("YOU LOSE");
                         location.reload();
-                  }
+                    }
                 }
-          }
+            }
         });
     }
 }

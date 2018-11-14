@@ -15,7 +15,7 @@
  * do canvas, a fim de escrever app.js mais simples de lidar.
  */
 
-var Engine = (function(global) {
+var Engine = (function (global) {
     /* Pré-defina as variáveis que usaremos neste escopo,
      * crie o elemento canvas, pegue o contexto 2D desse
      * canvas, configure a altura/largura dos elementos do
@@ -42,8 +42,8 @@ var Engine = (function(global) {
          * velocidade do computador).
          * 
          */
-        var now = Date.now(),
-            dt = (now - lastTime) / 1000.0;
+        var now = Date.now()
+        dt = (now - lastTime) / 1000.0;
 
         /* Chame suas funções update/render e passe o delta de tempo para a
          * função update, pois ele pode ser usado para melhorar a animação.
@@ -84,9 +84,9 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-       // player.checkCollisions();
+        player.checkCollisions();
     }
-    
+
 
 
     /* É chamada pela função update, faz loops por todos os objetos dentro
@@ -97,7 +97,7 @@ var Engine = (function(global) {
      * nos métodos render.
      */
     function updateEntities(dt) {
-        allEnemies.forEach(function(enemy) {
+        allEnemies.forEach(function (enemy) {
             enemy.update(dt);
         });
         player.update();
@@ -114,19 +114,19 @@ var Engine = (function(global) {
          * para aquela linha específica do nível do jogo.
          */
         var rowImages = [
-                'images/water-block.png',   // Top row is water
-                'images/stone-block.png',   // Row 1 of 3 of stone
-                'images/stone-block.png',   // Row 2 of 3 of stone
-                'images/stone-block.png',   // Row 3 of 3 of stone
-                'images/grass-block.png',   // Row 1 of 2 of grass
-                'images/grass-block.png'    // Row 2 of 2 of grass
-            ],
+            'images/water-block.png',   // Top row is water
+            'images/stone-block.png',   // Row 1 of 3 of stone
+            'images/stone-block.png',   // Row 2 of 3 of stone
+            'images/stone-block.png',   // Row 3 of 3 of stone
+            'images/grass-block.png',   // Row 1 of 2 of grass
+            'images/grass-block.png'    // Row 2 of 2 of grass
+        ],
             numRows = 6,
             numCols = 5,
             row, col;
-        
+
         // Antes de fazer os desenhos, limpe os canvas existentes
-        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         /* Faça o loop pelo número de linhas e colunas que definimos acima
          * e, usando a array rowImages, desenhe a imagem correta para
@@ -156,7 +156,7 @@ var Engine = (function(global) {
         /* Faça o loop por todos os objetos dentro da array allEnemies
          * e chame a função render que você definiu.
          */
-        allEnemies.forEach(function(enemy) {
+        allEnemies.forEach(function (enemy) {
             enemy.render();
         });
 
