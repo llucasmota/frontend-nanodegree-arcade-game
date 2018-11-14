@@ -9,6 +9,7 @@ class Generic {
 class Enemy extends Generic {
     constructor(x, y, speed, sprite) {
         super(x, y, sprite);
+        
         this.speed = speed;
     }
     // Desenhe o inimigo na tela, método exigido pelo jogo
@@ -28,8 +29,8 @@ class Enemy extends Generic {
     }
 }
 var allEnemies = [
-    new Enemy(0, 101, 50, 'images/enemy-bug.png'),
-    new Enemy(0, 202, 50, 'images/enemy-bug.png'),
+    new Enemy(0, 130, 50, 'images/enemy-bug.png'),
+    // new Enemy(0, 202, 50, 'images/enemy-bug.png'),
     // new Enemy(0, 240, 60, 'images/enemy-bug.png'),
     // new Enemy(0, 80, 80, 'images/enemy-bug.png'),
     // new Enemy(0, 160, 90, 'images/enemy-bug.png'),
@@ -50,15 +51,16 @@ class Player extends Generic {
     // Atualize a posição do inimigo, método exigido pelo jogo
     // Parâmetro: dt, um delta de tempo entre ticks
     update() {
-
+        this.checkCollisions();
     }
     handleInput(key) {
 
         if (key === "up" && this.y >= 8 && this.y >= -70) {
-            this.y -= 101;
+            this.y -= 100;
+           
         }
         if (key === "down" && this.y < 410) {
-            this.y += 101;
+            this.y += 100;
         }
         if (key === "right" && this.x >= -2 && this.x <= 380) {
             this.x += 101;
@@ -74,12 +76,15 @@ class Player extends Generic {
 
     checkCollisions() {
         allEnemies.forEach(function (enemy) {
-            if (player.y <= (enemy.y - 15) && player.x <= (enemy.x - 15) || player.y <= (enemy.y + 15) && player.x <= (enemy.x + 15)) {
-                console.log("calma aí");
-                player.reset();
-            } else {
-                console.log("continua");
-            }
+          if(enemy.y === player.y){
+              for(var i = 0; i <= 20; i++)  {
+                  if((enemy.x.toFixed(0)) == player.x - i || (enemy.x.toFixed(0)) == player.x + i){
+                        player.reset();
+                        alert("YOU LOSE");
+                        location.reload();
+                  }
+                }
+          }
         });
     }
 }
