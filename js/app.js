@@ -28,17 +28,17 @@ class Enemy extends Generic {
 
     }
 }
+// Represente seus objetos como instâncias.
+// Coloque todos os objetos inimgos numa array allEnemies
+// Coloque o objeto do jogador numa variável chamada jogador.
 var allEnemies = [
     new Enemy(0, 130, 60, 'images/enemy-bug.png'),
     new Enemy(0, 230, 20, 'images/enemy-bug.png'),
-    new Enemy(0, 330, 30, 'images/enemy-bug.png'),
-
+    new Enemy(0, 30, 30, 'images/enemy-bug.png'),
 ];
-/**
- * Você deve multiplicar qualquer movimento pelo parâmetro
-dt, o que garantirá que o jogo rode na mesma velocidade
-em qualquer computador.
- */
+// Agora, escreva sua própria classe de jogador
+// Esta classe exige um método update(), 
+// um render() e um handleInput()2.
 class Player extends Generic {
     constructor(x, y, sprite) {
         super(x, y, sprite);
@@ -46,8 +46,7 @@ class Player extends Generic {
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
-    // Atualize a posição do inimigo, método exigido pelo jogo
-    // Parâmetro: dt, um delta de tempo entre ticks
+
     update() {
 
     }
@@ -55,7 +54,6 @@ class Player extends Generic {
 
         if (key === "up" && this.y >= 8 && this.y >= -70) {
             this.y -= 100;
-
         }
         if (key === "down" && this.y < 410) {
             this.y += 100;
@@ -66,13 +64,14 @@ class Player extends Generic {
         if (key === "left" && this.x >= 5) {
             this.x -= 101;
         }
-
+        if (this.y <= -70) {
+            alert("Parabéns! Você venceu.");
+        }
     }
     reset() {
         this.x = 200;
         this.y = 420;
     }
-
     checkCollisions() {
         allEnemies.forEach(function (enemy) {
             if (enemy.y === player.y) {
@@ -88,15 +87,6 @@ class Player extends Generic {
     }
 }
 var player = new Player(200, 430, 'images/char-boy.png');
-// Agora, escreva sua própria classe de jogador
-// Esta classe exige um método update(), 
-// um render() e um handleInput()2.
-
-
-// Represente seus objetos como instâncias.
-// Coloque todos os objetos inimgos numa array allEnemies
-// Coloque o objeto do jogador numa variável chamada jogador.
-
 
 // Isto reconhece cliques em teclas e envia as chaves para seu
 // jogador. método handleInput(). Não é preciso mudar nada.
