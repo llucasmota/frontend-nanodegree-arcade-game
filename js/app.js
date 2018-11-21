@@ -1,3 +1,4 @@
+//Classe Genérica do Enemy e do Player
 class Generic {
     constructor(x, y, sprite) {
         this.x = x;
