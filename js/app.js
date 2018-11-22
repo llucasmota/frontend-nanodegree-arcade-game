@@ -67,24 +67,30 @@ class Player extends Generic {
         }
         if (this.y <= -70) {
             alert("Parabéns! Você venceu.");
+            location.reload();
         }
     }
     reset() {
         this.x = 200;
         this.y = 420;
     }
+    /**
+     * este método veririca se há uma colisão entre o Enemy e o Player
+     * Pra cada inimigo instanciado, primeiramente é verifica se o eixo Y é idêntico
+     * Para o eixo X há uma aproximação do valor
+     */
     checkCollisions() {
-        allEnemies.forEach(function (enemy) {
-            if (enemy.y === player.y) {
-                for (var i = 0; i <= 20; i++) {
-                    if ((enemy.x.toFixed(0)) == player.x - i || (enemy.x.toFixed(0)) == player.x + i) {
+        for (var i = 0; i < allEnemies.length; i++) {
+            if (allEnemies[i].y === this.y) {
+                for (var a = 0; a <= 20; a++) {
+                    if ((allEnemies[i].x.toFixed(0)) == this.x - a || (allEnemies[i].x.toFixed(0)) == this.x + a) {
                         player.reset();
                         alert("YOU LOSE");
                         location.reload();
                     }
                 }
             }
-        });
+        }
     }
 }
 var player = new Player(200, 430, 'images/char-boy.png');

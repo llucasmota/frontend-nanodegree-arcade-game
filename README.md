@@ -21,3 +21,15 @@ python -m SimpleHTTPServer
 ```
 localhost:8080/index.html
 ```
+* Acessar diretamente o arquivo html diretamente atrav[es do navegador: 
+
+```
+index.html
+```
+#### Para Windows:
+
+* Acessar diretamente o arquivo html diretamente atrav[es do navegador: 
+
+```
+index.html
+```

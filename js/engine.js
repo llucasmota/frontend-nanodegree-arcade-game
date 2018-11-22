@@ -42,7 +42,7 @@ var Engine = (function (global) {
          * velocidade do computador).
          * 
          */
-        var now = Date.now()
+        var now = Date.now();
         dt = (now - lastTime) / 1000.0;
 
         /* Chame suas funções update/render e passe o delta de tempo para a
