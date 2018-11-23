@@ -84,7 +84,7 @@ class Player extends Generic {
             if (allEnemies[i].y === this.y) {
                 for (var a = 0; a <= 20; a++) {
                     if ((allEnemies[i].x.toFixed(0)) == this.x - a || (allEnemies[i].x.toFixed(0)) == this.x + a) {
-                        player.reset();
+                        this.reset();
                         alert("YOU LOSE");
                         location.reload();
                     }
